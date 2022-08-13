@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Go Chat Server</title>
+</head>
+<body>
+
+    <div>
+        <input id="authToken" name="authToken" placeholder="Auth Token" />
+        <button onclick="initWs()">Connect</button>
+    </div>
+
+    <div>
+        <h2>Welcome to Go Chat Server</h2>
+    </div>
+
+
+    <script type="text/javascript">
+
+        function initWs() {
+
+            var authToken = document.getElementById("authToken").value;
+            if (authToken == null || authToken.length == 0) {
+                alert("Auth Token is required to connect")
+                return
+            }
+            var ws = new WebSocket('ws://localhost:8888/?authToken=' + authToken);
+
+            ws.onopen = () => {
+                console.log("Connected");
+            }
+
+            ws.onmessage = (msg) => {
+
+                if (msg.data != "p") {
+                    console.log("Server messsage:", msg.data);
+                }
+
+            }
+
+            ws.onclose = () => {
+                console.log("Disconnected");
+            }
+
+            window.ws = ws;
+        }
+
+    </script>
+</body>
+</html>
