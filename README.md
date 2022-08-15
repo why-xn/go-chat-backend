@@ -1,3 +1,8 @@
+## GO CHAT
+
+Go Chat is a Chat Server with Epoll based connection handling written in Golang.
+
+### HOW TO RUN
 **Prerequisites**
 * MySQL Server
 * Redis Server
@@ -56,6 +61,15 @@ docker run --rm -it --name=go-chat-backend \
     -p 8888:8888 \
     whyxn/go-chat-backend:latest
 ````
+
+
+**Access Application** \
+`http://localhost:8080`
+
+**Test User Tokens** \
+`visitor1`\
+`exibitor1`
+
 <br/>
 
 **Screen Shots** \
